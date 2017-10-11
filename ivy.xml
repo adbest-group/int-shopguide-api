@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="./config/ivy/ivy-doc.xsl"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+	<info organisation="com.bt.int" module="int-shopguide-api" revision="1.0.0" status="release"/>
+	
+   <configurations>
+		<conf name="compile" visibility="public" />
+		<conf name="test" visibility="private" extends="compile" />
+		<conf name="runtime" visibility="public" extends="compile" />
+		<conf name="develop" visibility="public" extends="compile" />
+	</configurations>
+	
+	<publications>
+		<artifact name="lab-mac-api" type="jar" ext="jar" conf="compile" />
+		<artifact name="lab-mac-api" type="" ext="jar" conf="compile" />
+		<artifact name="lab-mac-api" type="source" ext="jar"  conf="compile" />
+		<artifact name="lab-mac-api" type="sources" ext="jar" conf="compile" />
+		<artifact name="lab-mac-api" type="javadoc" ext="jar" conf="compile" />
+		<artifact name="lab-mac-api" type="" ext="pom" conf="compile" />
+	</publications>
+
+	<dependencies>
+		<!--Mybatis-->
+		<dependency org="org.mybatis" name="mybatis-spring" rev="1.2.2"  conf="compile,test->default(*)"/>
+		<dependency org="org.mybatis" name="mybatis" rev="3.2.7"  conf="compile,test->default(*)"/>
+		<dependency org="com.alibaba" name="druid" rev="1.0.5"  conf="compile,test->default(*)"/>
+		<!--Spring-->
+		<dependency org="org.springframework" name="spring-aop" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-beans" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-context" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-core" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-jdbc" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-expression" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-tx" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-test" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-context-support" rev="4.2.0.RELEASE"   conf="compile,test->default(*)"/>
+		
+		<!-- Spring Web -->
+		<dependency org="org.springframework" name="spring-webmvc" rev="4.2.0.RELEASE" conf="compile,test->default(*)"/>
+		<dependency org="org.springframework" name="spring-web" rev="4.2.0.RELEASE" conf="compile,test->default(*)"/>
+		<!--Spring 要用到 面向切面的框架-->
+		<dependency org="org.aspectj" name="aspectjweaver" rev="1.8.4"   conf="compile,test->default(*)"/>
+		<!-- Spring redis -->
+		<dependency org="org.springframework.data" name="spring-data-redis" rev="1.8.7.RELEASE"  conf="compile,test->default(*)"/>
+		<dependency org="redis.clients" name="jedis" rev="2.9.0" conf="compile,test->default(*)"/>
+		<!--在运行期扩展Java类与实现Java接口，工具包-->
+		<dependency org="cglib" name="cglib" rev="2.2.2"  conf="compile,test->default(*)"/>
+		<!--日志相关，Spring要用-->
+		<dependency org="log4j" name="log4j" rev="1.2.16"   conf="compile,test->default(*)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.7"   conf="compile,test->default(*)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.7"   conf="compile,test->default(*)"/>
+		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.4"   conf="compile,test->default(*)"/>
+		<!--作为容器类的补充,操作类的补充,辅助类的补充-->
+		<dependency org="commons-collections" name="commons-collections" rev="3.2.1"  conf="compile,test->default(*)"/>
+		<!--动态的获取/设值Java Bean的属性-->
+		<dependency org="commons-beanutils" name="commons-beanutils" rev="1.8.3"  conf="compile,test->default(*)"/>
+		<!--IO处理-->
+		<dependency org="commons-io" name="commons-io" rev="2.4" conf="compile,test->default(*)" />
+		<!--编码处理-->
+		<dependency org="commons-codec" name="commons-codec" rev="1.6" />
+		<!--配置读取-->
+		<dependency org="commons-configuration" name="commons-configuration" rev="1.8" conf="compile,test->default(*)" />
+		<!--验证-->
+		<dependency org="commons-validator" name="commons-validator" rev="1.4.0" conf="compile,test->default(*)" />
+		<!--JSON-->
+		<dependency org="com.google.code.gson" name="gson" rev="2.2.4" conf="compile,test->default(*)" />
+		<!--加密解密-->
+		<dependency org="org.bouncycastle" name="bcprov-jdk14" rev="1.50" conf="compile,test->default(*)" />
+		<!--Mysql-->
+		<dependency org="mysql" name="mysql-connector-java" rev="5.1.36"  conf="compile,test->default(*)" />
+		<!--Jetty-->
+		<dependency org="org.eclipse.jetty" name="jetty-server" rev="9.2.13.v20150730" conf="compile,test->default(*)"/>
+		<dependency org="org.eclipse.jetty" name="jetty-servlet" rev="9.2.13.v20150730" conf="compile,test->default(*)"/>
+		<dependency org="org.eclipse.jetty" name="jetty-webapp" rev="9.2.13.v20150730" conf="compile,test->default(*)"/>
+		<!--GoogleJAVA开源库-->
+		<dependency org="com.google.guava" name="guava" rev="18.0" conf="compile,test->default(*)" />
+		<!-- jackson -->
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.8.5" conf="compile,test->default(*)"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.8.5" conf="compile,test->default(*)"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.8.5" conf="compile,test->default(*)"/>
+		<!-- quartz-->
+		<dependency org="org.quartz-scheduler" name="quartz" rev="2.2.1" conf="compile,test->default(compile)"/>
+		
+	</dependencies>	
+</ivy-module>
