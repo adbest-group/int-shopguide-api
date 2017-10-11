@@ -493,4 +493,14 @@ public class GoodsListWithHtml implements Serializable{
     public void setContentHtml(byte[] contentHtml) {
         this.contentHtml = contentHtml;
     }
+
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

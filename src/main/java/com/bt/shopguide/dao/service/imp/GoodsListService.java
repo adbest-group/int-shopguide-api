@@ -43,4 +43,19 @@ public class GoodsListService implements IGoodsListService {
     public GoodsListWithHtml selectGoodDetailByGoodsId(Long id) {
         return glMapper.selectGoodDetailByGoodsId(id);
     }
+
+    @Override
+    public void selectGoodsListPageWithHtml(PageDataVo<GoodsListWithHtml> vo) {
+        int totalCount = glMapper.getTotalCountWithHtml(vo.getConditionMap());
+        if(totalCount > 0){
+            Map<String,Object> params = new HashMap<String,Object>();
+            for(Map.Entry<String, Object> entry:vo.getConditionMap().entrySet()){
+                params.put(entry.getKey(), entry.getValue());
+            }
+            params.put("startIndex", (vo.getPageIndex()-1)*vo.getPageSize());
+            params.put("pageSize", vo.getPageSize());
+            vo.setData(glMapper.selectPageWithHtml(params));
+            vo.setTotalCount(totalCount);
+        }
+    }
 }

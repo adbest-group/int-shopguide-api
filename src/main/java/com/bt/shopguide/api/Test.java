@@ -1,4 +1,4 @@
-package main.java.com.bt.shopguide.api;
+package com.bt.shopguide.api;
 
 /**
  * Created by caiting on 2017/9/28.

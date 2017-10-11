@@ -12,4 +12,5 @@ public interface IGoodsListService {
     public int save(GoodsList glist);
     public void selectGoodsListPage(PageDataVo<GoodsList> vo);
     public GoodsListWithHtml selectGoodDetailByGoodsId(Long id);
+    public void selectGoodsListPageWithHtml(PageDataVo<GoodsListWithHtml> vo);
 }

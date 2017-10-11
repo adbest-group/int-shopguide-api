@@ -12,12 +12,12 @@
 	</configurations>
 	
 	<publications>
-		<artifact name="lab-mac-api" type="jar" ext="jar" conf="compile" />
-		<artifact name="lab-mac-api" type="" ext="jar" conf="compile" />
-		<artifact name="lab-mac-api" type="source" ext="jar"  conf="compile" />
-		<artifact name="lab-mac-api" type="sources" ext="jar" conf="compile" />
-		<artifact name="lab-mac-api" type="javadoc" ext="jar" conf="compile" />
-		<artifact name="lab-mac-api" type="" ext="pom" conf="compile" />
+		<artifact name="int-shopguide-api" type="jar" ext="jar" conf="compile" />
+		<artifact name="int-shopguide-api" type="" ext="jar" conf="compile" />
+		<artifact name="int-shopguide-api" type="source" ext="jar"  conf="compile" />
+		<artifact name="int-shopguide-api" type="sources" ext="jar" conf="compile" />
+		<artifact name="int-shopguide-api" type="javadoc" ext="jar" conf="compile" />
+		<artifact name="int-shopguide-api" type="" ext="pom" conf="compile" />
 	</publications>
 
 	<dependencies>

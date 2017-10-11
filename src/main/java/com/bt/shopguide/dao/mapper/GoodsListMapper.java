@@ -58,4 +58,6 @@ public interface GoodsListMapper {
     List<GoodsList> selectPage(Map map);
     int getTotalCount(Map map);
     GoodsListWithHtml selectGoodDetailByGoodsId(Long id);
+    List<GoodsListWithHtml> selectPageWithHtml(Map map);
+    int getTotalCountWithHtml(Map map);
 }

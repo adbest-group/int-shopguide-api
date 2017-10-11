@@ -1,4 +1,4 @@
-package main.java.com.bt.shopguide.api.service.imp;
+package com.bt.shopguide.dao.service.imp;
 
 import com.bt.shopguide.dao.entity.GoodsErrors;
 import com.bt.shopguide.dao.mapper.GoodsErrorsMapper;
