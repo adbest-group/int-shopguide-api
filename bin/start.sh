@@ -2,7 +2,7 @@
 
 PRGDIR=`dirname $0`
 SERVER_HOME=$(echo `readlink -f $PRGDIR` | sed 's/\/bin//')
-JAVA_HOME="/opt/dsp_software/jdk1.8.0_111"
+#JAVA_HOME="/opt/dsp_software/jdk1.8.0_111"
 . "$SERVER_HOME/bin/env.sh"
 if [ -n "$PROID" ]; then
 	echo "${MODULE} is running."
