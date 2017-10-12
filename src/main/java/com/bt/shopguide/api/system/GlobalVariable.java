@@ -47,18 +47,45 @@ public class GlobalVariable {
     public void init(){
         logger.info("初始化全局变量开始！~~~~~~~~~~~~~~~");
 
-        malls = mallsService.getAllMalls();
+        loadMalls();
+        loadHotwords();
+        loadCategorys();
 
-        hotwords = hotwordService.getTop5();
-
-        PageDataVo<GoodsList> vo = new PageDataVo<>();
-        vo.setPageSize(10);
-        goodsListService.selectGoodsListPage(vo);
-        goods_list_top10 = vo.getData();
-
-        categorys = categoryService.getTopN(10);
+        loadGoodTop10();
 
 
         logger.info("初始化全局变量完成！~~~~~~~~~~~~~~~");
+    }
+
+    //刷新商城
+    public void loadMalls(){
+        List<Malls> tmpMalls = mallsService.getAllMalls();
+        malls = tmpMalls;
+        logger.info("刷新商城完成！~~~~~~~~~~~~~~~");
+    }
+
+    //刷新热词
+    public void loadHotwords(){
+        List<Hotword> tmpHotwords = hotwordService.getTop5();
+        hotwords = tmpHotwords;
+        logger.info("刷新热词完成！~~~~~~~~~~~~~~~");
+    }
+
+    //刷新分类
+    public void loadCategorys(){
+        List<Category> tmp = categoryService.getTopN(10);
+        categorys = tmp;
+        logger.info("刷新分类完成！~~~~~~~~~~~~~~~");
+    }
+
+    //刷新top10商品
+    public void loadGoodTop10(){
+        PageDataVo<GoodsList> vo = new PageDataVo<>();
+        vo.setPageSize(10);
+        goodsListService.selectGoodsListPage(vo);
+        if(vo.getData()!=null&&vo.getData().size()>0){
+            goods_list_top10 = vo.getData();
+        }
+        logger.info("刷新top10商品完成！~~~~~~~~~~~~~~~");
     }
 }

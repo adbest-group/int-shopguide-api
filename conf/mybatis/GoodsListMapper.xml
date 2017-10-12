@@ -334,7 +334,7 @@
       and a.id > #{id,jdbcType=BIGINT}
     </if>
     and a.publish = 1
-    order by a.sync_time desc
+    order by id
     limit #{startIndex,jdbcType=BIGINT},#{pageSize,jdbcType=BIGINT}
   </select>
   <select id="getTotalCountWithHtml" resultType="java.lang.Integer" parameterType="map" >
