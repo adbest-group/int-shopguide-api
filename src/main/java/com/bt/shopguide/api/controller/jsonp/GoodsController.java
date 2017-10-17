@@ -40,7 +40,8 @@ public class GoodsController {
     @RequestMapping(value = "/goods")
     public JsonResult getGoodsList(@RequestParam(value = "page",defaultValue = "1") Integer pageIndex,
                                    @RequestParam(value = "mall",required = false) String mallName,
-                                   @RequestParam(value = "category",required = false) String category){
+                                   @RequestParam(value = "category",required = false) String category,
+                                   @RequestParam(value = "id",required = false) Long id){
         JsonResult result = new JsonResult();
         JsonResultArrayWithPage jrap = new JsonResultArrayWithPage();
 
@@ -51,6 +52,7 @@ public class GoodsController {
         Map<String,Object> condition = Maps.newHashMap();
         if(mallName!=null) condition.put("mallName",mallName);
         if(category!=null) condition.put("category",category);
+        if(id!=null) condition.put("id",id);
         vo.setConditionMap(condition);
         goodsListService.selectGoodsListPage(vo);
 
