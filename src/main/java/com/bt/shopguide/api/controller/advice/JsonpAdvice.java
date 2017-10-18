@@ -20,24 +20,25 @@ import java.util.Set;
 @ControllerAdvice(basePackages = "com.bt.shopguide.api.controller.jsonp")
 public class JsonpAdvice extends AbstractJsonpResponseBodyAdvice {
     private Logger logger = Logger.getLogger(JsonpAdvice.class);
-    //允许跨域的域名列表
-    @Value("${project.allow_access_domain}")
-    private String allow_access_domain;
+//    //允许跨域的域名列表
+//    @Value("${project.allow_access_domain}")
+//    private String allow_access_domain;
     public static Set<String> allow_access_domain_set = new HashSet<>();
 
-    public JsonpAdvice(){
+    public JsonpAdvice(@Value("${project.allow_access_domain}") String allow_access_domain){
         super("callback","jsonp");
         if(allow_access_domain!=null&& allow_access_domain.trim().length()>0){
             for(String domain:allow_access_domain.split(",")){
                 allow_access_domain_set.add(domain);
             }
         }
+        logger.info("project.allow_access_domain:"+allow_access_domain);
     }
 
     @Override
     protected void beforeBodyWriteInternal(MappingJacksonValue bodyContainer, MediaType contentType, MethodParameter returnType, ServerHttpRequest request, ServerHttpResponse response) {
         String origin = request.getHeaders().getOrigin();
-        logger.info("origin:"+origin);
+
         if(allow_access_domain_set.contains(origin)){
                 response.getHeaders().add("Access-Control-Allow-Origin",origin);
         }
