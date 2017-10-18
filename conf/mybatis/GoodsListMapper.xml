@@ -285,8 +285,12 @@
     <if test="id != null" >
       and id > #{id,jdbcType=BIGINT}
     </if>
+    <if test="syncTime != null" >
+      <!-- syncTime参数主要用于获取有几条新商品用，因此用>= 和 id 一起用，String 格式：yyyy-MM-dd HH:mm:ss -->
+      and sync_time >= #{syncTime,jdbcType=VARCHAR}
+    </if>
     and publish = 1
-    order by sync_time desc
+    order by sync_time desc,id desc
     limit #{startIndex,jdbcType=BIGINT},#{pageSize,jdbcType=BIGINT}
   </select>
   <select id="getTotalCount" resultType="java.lang.Integer" parameterType="map" >
@@ -305,6 +309,10 @@
     </if>
     <if test="id != null" >
       and id > #{id,jdbcType=BIGINT}
+    </if>
+    <if test="syncTime != null" >
+      <!-- syncTime参数主要用于获取有几条新商品用，因此用>= 和 id 一起用，String 格式：yyyy-MM-dd HH:mm:ss -->
+      and sync_time >= #{syncTime,jdbcType=VARCHAR}
     </if>
     and publish = 1
   </select>
