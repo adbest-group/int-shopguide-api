@@ -21,6 +21,7 @@ public class JsonpAdvice extends AbstractJsonpResponseBodyAdvice {
     @Override
     protected void beforeBodyWriteInternal(MappingJacksonValue bodyContainer, MediaType contentType, MethodParameter returnType, ServerHttpRequest request, ServerHttpResponse response) {
         response.getHeaders().add("Access-Control-Allow-Origin","http://172.16.88.60:8088");
+        response.getHeaders().add("Access-Control-Allow-Credentials","true");
         super.beforeBodyWriteInternal(bodyContainer, contentType, returnType, request, response);
     }
 }
