@@ -23,6 +23,7 @@ public class GoodDetailVo implements Serializable {
     private String goodSourceName;
     private String shortContent;
     private String url;
+    private Integer thumbs;
     private String contentHtml;
     private Date syncTime;
 
@@ -40,6 +41,7 @@ public class GoodDetailVo implements Serializable {
         this.goodSourceName = entity.getGoodSourceName();
         this.shortContent = entity.getShortContent();
         this.url = entity.getUrl();
+        this.thumbs = entity.getThumbs();
         this.syncTime = entity.getSyncTime();
         try {
             this.contentHtml = new String(entity.getContentHtml(),charset);
@@ -159,5 +161,13 @@ public class GoodDetailVo implements Serializable {
 
     public void setSyncTime(Date syncTime) {
         this.syncTime = syncTime;
+    }
+
+    public Integer getThumbs() {
+        return thumbs;
+    }
+
+    public void setThumbs(Integer thumbs) {
+        this.thumbs = thumbs;
     }
 }
