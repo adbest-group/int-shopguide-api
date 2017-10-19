@@ -130,4 +130,24 @@ public class GoodsController {
         }
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping("/goods/thumbs")
+    public JsonResult thumbs(@RequestParam(value = "id",required = false) Long id){
+        JsonResult result = new JsonResult();
+        if(id==null){
+            result.setCode(-1);
+            result.setMsg("paramter id is necessary!");
+        }else{
+            try {
+                goodsListService.increaseThumbs(id,1);
+                result.setResult(goodsListService.getGoodsListById(id));
+            }catch(Exception e){
+                e.printStackTrace();
+                result.setCode(-1);
+                result.setMsg("thumbs faild!");
+            }
+        }
+        return result;
+    }
 }

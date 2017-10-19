@@ -13,4 +13,6 @@ public interface IGoodsListService {
     public void selectGoodsListPage(PageDataVo<GoodsList> vo);
     public GoodsListWithHtml selectGoodDetailByGoodsId(Long id);
     public void selectGoodsListPageWithHtml(PageDataVo<GoodsListWithHtml> vo);
+    public int increaseThumbs(Long id,Integer count);
+    public GoodsList getGoodsListById(Long id);
 }

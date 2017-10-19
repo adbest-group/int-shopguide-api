@@ -493,4 +493,14 @@ public class GoodsList implements Serializable{
     public void setCategory(String category) {
         this.category = category;
     }
+
+    private Integer thumbs;
+
+    public Integer getThumbs() {
+        return thumbs;
+    }
+
+    public void setThumbs(Integer thumbs) {
+        this.thumbs = thumbs;
+    }
 }

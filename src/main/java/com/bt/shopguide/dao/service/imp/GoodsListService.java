@@ -58,4 +58,14 @@ public class GoodsListService implements IGoodsListService {
             vo.setTotalCount(totalCount);
         }
     }
+
+    @Override
+    public int increaseThumbs(Long id, Integer count) {
+        return glMapper.increaseThumbs(id,count);
+    }
+
+    @Override
+    public GoodsList getGoodsListById(Long id) {
+        return glMapper.selectByPrimaryKey(id);
+    }
 }

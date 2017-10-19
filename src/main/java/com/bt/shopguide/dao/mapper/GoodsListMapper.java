@@ -2,6 +2,7 @@ package com.bt.shopguide.dao.mapper;
 
 import com.bt.shopguide.dao.entity.GoodsList;
 import com.bt.shopguide.dao.entity.GoodsListWithHtml;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -60,4 +61,5 @@ public interface GoodsListMapper {
     GoodsListWithHtml selectGoodDetailByGoodsId(Long id);
     List<GoodsListWithHtml> selectPageWithHtml(Map map);
     int getTotalCountWithHtml(Map map);
+    int increaseThumbs(@Param("id")Long id,@Param("count")Integer count);
 }
