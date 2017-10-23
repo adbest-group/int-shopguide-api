@@ -96,6 +96,7 @@ public class BehaviorController {
             u = new User();
             u.setCookie(userCookie.getValue());
             u.setDeviceId(ua);
+            u.setIp(request.getRemoteAddr());
             u.setCreateTime(new Date());
             userService.save(u);
         }else{
