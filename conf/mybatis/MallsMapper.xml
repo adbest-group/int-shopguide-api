@@ -165,4 +165,10 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getTopN" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from MALLS order by seq
+    limit #{n,jdbcType=INTEGER};
+  </select>
 </mapper>

@@ -59,7 +59,7 @@ public class GlobalVariable {
 
     //刷新商城
     public void loadMalls(){
-        List<Malls> tmpMalls = mallsService.getAllMalls();
+        List<Malls> tmpMalls = mallsService.getTopN(8);
         malls = tmpMalls;
         logger.info("刷新商城完成！~~~~~~~~~~~~~~~");
     }

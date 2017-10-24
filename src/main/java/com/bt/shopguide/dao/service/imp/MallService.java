@@ -21,4 +21,9 @@ public class MallService implements IMallsService {
     public List<Malls> getAllMalls() {
         return mallsMapper.selectAll();
     }
+
+    @Override
+    public List<Malls> getTopN(Integer n) {
+        return mallsMapper.getTopN(n);
+    }
 }

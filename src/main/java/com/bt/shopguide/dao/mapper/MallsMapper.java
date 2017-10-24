@@ -54,4 +54,5 @@ public interface MallsMapper {
     int updateByPrimaryKey(Malls record);
 
     List<Malls> selectAll();
+    List<Malls> getTopN(Integer n);
 }

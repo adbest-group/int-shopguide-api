@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface IMallsService {
     public List<Malls> getAllMalls();
+    public List<Malls> getTopN(Integer n);
 }
