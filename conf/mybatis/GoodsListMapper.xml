@@ -386,4 +386,37 @@
   <update id="increaseThumbs">
     update GOODS_LIST set thumbs = thumbs + #{count,jdbcType=INTEGER} where id = #{id,jdbcType=BIGINT};
   </update>
+
+  <select id="getRandGoodsList" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from (select *
+    from GOODS_LIST
+    where 1=1
+    <if test="mallName != null" >
+      and mall_name = #{mallName,jdbcType=VARCHAR}
+    </if>
+    <if test="category != null" >
+      and category = #{category,jdbcType=VARCHAR}
+    </if>
+    and publish = 1
+    order by id desc
+    <choose>
+      <when test="randInTotalCount != null">
+        limit #{randInTotalCount,jdbcType=INTEGER}
+      </when>
+      <otherwise>
+        limit 100
+      </otherwise>
+    </choose>
+    ) a order by rand()
+    <choose>
+      <when test="randCount != null">
+        limit #{randCount,jdbcType=INTEGER}
+      </when>
+      <otherwise>
+        limit 4
+      </otherwise>
+    </choose>
+  </select>
 </mapper>

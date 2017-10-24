@@ -62,4 +62,5 @@ public interface GoodsListMapper {
     List<GoodsListWithHtml> selectPageWithHtml(Map map);
     int getTotalCountWithHtml(Map map);
     int increaseThumbs(@Param("id")Long id,@Param("count")Integer count);
+    List<GoodsList> getRandGoodsList(Map map);
 }

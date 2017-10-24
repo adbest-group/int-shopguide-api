@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
@@ -146,6 +147,64 @@ public class GoodsController {
                 e.printStackTrace();
                 result.setCode(-1);
                 result.setMsg("thumbs faild!");
+            }
+        }
+        return result;
+    }
+
+    /**
+     *根据商品id获取推荐可能喜欢的商品
+     * 定义为商品相同category下的随机四种商品
+     **/
+    @ResponseBody
+    @RequestMapping(value = "/goods/maybelike")
+    public JsonResult getMayBeLike(@RequestParam(value = "id",required = false)Long id){
+        JsonResult result = new JsonResult();
+        if(id==null){
+            result.setCode(-1);
+            result.setMsg("paramter id is necessary!");
+        }else{
+            GoodsList gl = goodsListService.getGoodsListById(id);
+            if(gl!=null){
+                JsonResultArray jrap = new JsonResultArray();
+                if(gl.getCategory()==null){
+                    jrap.setList(new ArrayList<GoodsList>());
+                }else{
+                    jrap.setList(goodsListService.getRandGoodsByCategory(gl.getCategory(),4));
+                }
+                result.setResult(jrap);
+            }else {
+                result.setCode(-1);
+                result.setMsg("invilid id!");
+            }
+        }
+        return result;
+    }
+
+    /**
+     *根据商品id获取同商城热门的商品
+     * 定义为商品相同商城下的随机四种商品
+     **/
+    @ResponseBody
+    @RequestMapping(value = "/goods/mallhot")
+    public JsonResult getMallHot(@RequestParam(value = "id",required = false)Long id){
+        JsonResult result = new JsonResult();
+        if(id==null){
+            result.setCode(-1);
+            result.setMsg("paramter id is necessary!");
+        }else{
+            GoodsList gl = goodsListService.getGoodsListById(id);
+            if(gl!=null){
+                JsonResultArray jrap = new JsonResultArray();
+                if(gl.getMallName()==null){
+                    jrap.setList(new ArrayList<GoodsList>());
+                }else{
+                    jrap.setList(goodsListService.getRandGoodsByMall(gl.getMallName(),4));
+                }
+                result.setResult(jrap);
+            }else {
+                result.setCode(-1);
+                result.setMsg("invilid id!");
             }
         }
         return result;

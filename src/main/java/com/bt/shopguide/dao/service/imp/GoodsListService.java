@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -67,5 +68,21 @@ public class GoodsListService implements IGoodsListService {
     @Override
     public GoodsList getGoodsListById(Long id) {
         return glMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<GoodsList> getRandGoodsByMall(String mallName, Integer count) {
+        Map paramMap = new HashMap();
+        paramMap.put("mallName",mallName);
+        paramMap.put("randCount",count);
+        return glMapper.getRandGoodsList(paramMap);
+    }
+
+    @Override
+    public List<GoodsList> getRandGoodsByCategory(String category, Integer count) {
+        Map paramMap = new HashMap();
+        paramMap.put("category",category);
+        paramMap.put("randCount",count);
+        return glMapper.getRandGoodsList(paramMap);
     }
 }
