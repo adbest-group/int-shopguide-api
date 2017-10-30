@@ -68,6 +68,31 @@ public class GoodsController {
         jrap.setTotalCount(vo.getTotalCount());
         jrap.setList(vo.getData());
 
+        //设置当前第一条数据的id和syncTime
+        if(vo.getTotalCount()>0) {
+            if (pageIndex == 1) {
+                GoodsList gl = (GoodsList) vo.getData().get(0);
+                jrap.setMaxId(gl.getId());
+                jrap.setMaxSyncTime(gl.getSyncTime());
+            } else {
+                //组装分页组件
+                PageDataVo<GoodsList> v1 = new PageDataVo<>();
+                v1.setPageIndex(1);
+                v1.setPageSize(1);
+                Map<String, Object> condition1 = Maps.newHashMap();
+                if (mallName != null) condition1.put("mallName", mallName);
+                if (category != null) condition1.put("category", category);
+                if (id != null) condition1.put("id", id);
+                if (syncTime != null)
+                    condition1.put("syncTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(syncTime)));
+                v1.setConditionMap(condition1);
+                goodsListService.selectGoodsListPage(v1);
+                GoodsList gl = (GoodsList) v1.getData().get(0);
+                jrap.setMaxId(gl.getId());
+                jrap.setMaxSyncTime(gl.getSyncTime());
+            }
+        }
+
         result.setResult(jrap);
         return result;
     }
