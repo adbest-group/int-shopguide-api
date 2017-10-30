@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -199,7 +200,8 @@ public class GoodsController {
                 if(gl.getMallName()==null){
                     jrap.setList(new ArrayList<GoodsList>());
                 }else{
-                    jrap.setList(goodsListService.getRandGoodsByMall(gl.getMallName(),4));
+                    List<GoodsList> list = goodsListService.getRandGoodsByMall(gl.getMallName(),gl.getId(),4);
+                    jrap.setList(list);
                 }
                 result.setResult(jrap);
             }else {

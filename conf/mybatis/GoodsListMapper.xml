@@ -399,6 +399,9 @@
     <if test="category != null" >
       and category = #{category,jdbcType=VARCHAR}
     </if>
+    <if test="id != null" >
+      and id &lt;> #{id,jdbcType=INTEGER}
+    </if>
     and publish = 1
     order by id desc
     <choose>

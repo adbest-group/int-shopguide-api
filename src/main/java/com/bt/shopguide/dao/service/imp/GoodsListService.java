@@ -85,4 +85,37 @@ public class GoodsListService implements IGoodsListService {
         paramMap.put("randCount",count);
         return glMapper.getRandGoodsList(paramMap);
     }
+
+    @Override
+    public List<GoodsList> getRandGoodsByMall(String mallName, Long id, Integer count) {
+        Map paramMap = new HashMap();
+        paramMap.put("mallName",mallName);
+        int totalCount = glMapper.getTotalCount(paramMap);
+        if(totalCount > count){
+            paramMap.put("randCount",count);
+            paramMap.put("id",id);
+        }else{
+            paramMap.remove("mallName");
+            paramMap.put("randCount",count);
+            paramMap.put("id",id);
+        }
+
+        return glMapper.getRandGoodsList(paramMap);
+    }
+
+    @Override
+    public List<GoodsList> getRandGoodsByCategory(String category, Long id, Integer count) {
+        Map paramMap = new HashMap();
+        paramMap.put("category",category);
+        int totalCount = glMapper.getTotalCount(paramMap);
+        if(totalCount > count){
+            paramMap.put("randCount",count);
+            paramMap.put("id",id);
+        }else{
+            paramMap.remove("category");
+            paramMap.put("randCount",count);
+            paramMap.put("id",id);
+        }
+        return glMapper.getRandGoodsList(paramMap);
+    }
 }

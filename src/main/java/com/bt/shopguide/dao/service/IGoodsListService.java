@@ -19,4 +19,6 @@ public interface IGoodsListService {
     public GoodsList getGoodsListById(Long id);
     public List<GoodsList> getRandGoodsByMall(String mallName,Integer count);
     public List<GoodsList> getRandGoodsByCategory(String category,Integer count);
+    public List<GoodsList> getRandGoodsByMall(String mallName,Long id,Integer count);
+    public List<GoodsList> getRandGoodsByCategory(String category,Long id,Integer count);
 }
