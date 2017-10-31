@@ -81,6 +81,8 @@
 		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.8.5" conf="compile,test->default(*)"/>
 		<!-- quartz-->
 		<dependency org="org.quartz-scheduler" name="quartz" rev="2.2.1" conf="compile,test->default(compile)"/>
-		
+		<!--httpclient-->
+		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.2" conf="compile,test->default(*)" />
+
 	</dependencies>	
 </ivy-module>
