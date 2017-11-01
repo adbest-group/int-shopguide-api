@@ -37,7 +37,7 @@ public class FacebookUtil {
         fu.token = "EAAS3KvljZAhkBAAZAd4umKx54dZAPBUkJgfRciX2UCbu4ccHbJa7Crzjyx2irL4B37v1aFmjzZATLp6bvjBKNcAy6UtomdoqTpQZCaOW6pOLWpgvDZAfjAvxaMbR4FksZCirqQorU1fI52EQF9e426b04HBTZCGGjZCXHR2DnyPremAZDZD";
         fu.version= "v2.10";
         fu.host= "https://graph.facebook.com";
-        fu.userId= "867355876777770";
+        fu.userId= "280251415819072";
 
         System.out.println(fu.sharePhoto("http://b4.photo.store.qq.com/psu?/15b945c2-e6f4-41ff-b5c1-2bf3229a248c/ugjsQL3Jd1pLjh1PEGVsHZ4MFVD5FzTYAnAM.9C8zh8!/b/YUoQ2QE*0AAAYqqUbgJkyQAA&a=3&b=4&bo=WAIgAwAAAAABAF4!&rf=viewer_4","回顾2008奥运会"));
     }
