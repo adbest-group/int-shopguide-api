@@ -36,6 +36,7 @@ public class FacebookUtil {
         FacebookUtil fu = new FacebookUtil();
         fu.token = "EAAS3KvljZAhkBAAZAd4umKx54dZAPBUkJgfRciX2UCbu4ccHbJa7Crzjyx2irL4B37v1aFmjzZATLp6bvjBKNcAy6UtomdoqTpQZCaOW6pOLWpgvDZAfjAvxaMbR4FksZCirqQorU1fI52EQF9e426b04HBTZCGGjZCXHR2DnyPremAZDZD";
         fu.version= "v2.10";
+
         fu.host= "https://graph.facebook.com";
         fu.userId= "280251415819072";
 
