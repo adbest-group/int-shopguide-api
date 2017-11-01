@@ -34,11 +34,11 @@ public class FacebookUtil {
 
     public static void main(String[] args) {
         FacebookUtil fu = new FacebookUtil();
-        fu.token = "EAAS3KvljZAhkBAFEZAiNECTTLWugYeZB96V3BzFWZCz49imnY8VmkK6zH1ZAZBdpmzPPOAhlZBEx77v5YCd3ZBgeyMYlfm8c58YefS2Hgzo50ZCklQ0Q6XlCxYRmF8AR9gJxrn0xQZAaCQzqoinu8rZAFjtqDcKIysnJShc8jhv6iZAR4AZDZD";
+        fu.token = "EAAS3KvljZAhkBAAZAd4umKx54dZAPBUkJgfRciX2UCbu4ccHbJa7Crzjyx2irL4B37v1aFmjzZATLp6bvjBKNcAy6UtomdoqTpQZCaOW6pOLWpgvDZAfjAvxaMbR4FksZCirqQorU1fI52EQF9e426b04HBTZCGGjZCXHR2DnyPremAZDZD";
         fu.version= "v2.10";
         fu.host= "https://graph.facebook.com";
         fu.userId= "867355876777770";
 
-        System.out.println(fu.sharePhoto("http://b1.photo.store.qq.com/psu?/15b945c2-e6f4-41ff-b5c1-2bf3229a248c/QAhYWWcAqQAIf.lP1Y*Tzm9iVYfdaAA3fZ3OQSuEP5Y!/b/YQKE1wFv0gAAYtdpqQARfgAA&a=3&b=1&bo=ngL3AQAAAAABAE0!&rf=viewer_4","翻到旧照片，2008北京奥运会"));
+        System.out.println(fu.sharePhoto("http://b4.photo.store.qq.com/psu?/15b945c2-e6f4-41ff-b5c1-2bf3229a248c/ugjsQL3Jd1pLjh1PEGVsHZ4MFVD5FzTYAnAM.9C8zh8!/b/YUoQ2QE*0AAAYqqUbgJkyQAA&a=3&b=4&bo=WAIgAwAAAAABAF4!&rf=viewer_4","回顾2008奥运会"));
     }
 }
