@@ -12,13 +12,13 @@ import java.util.Map;
  */
 @Service
 public class FacebookUtil {
-//    @Value("${share.facebook.tooken}")
+    @Value("${share.facebook.tooken}")
     private String token;
-//    @Value("${share.facebook.apiversion}")
+    @Value("${share.facebook.apiversion}")
     private String version;
-//    @Value("${share.facebook.host}")
+    @Value("${share.facebook.host}")
     private String host;
-//    @Value("${share.facebook.user.id}")
+    @Value("${share.facebook.user.id}")
     private String userId;
 
 
