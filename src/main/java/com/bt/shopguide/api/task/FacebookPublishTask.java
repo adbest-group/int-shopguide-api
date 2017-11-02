@@ -19,6 +19,6 @@ public class FacebookPublishTask {
         HttpClientHelper http = HttpClientHelper.getInstance();
         Map m = new HashMap();
         m.put("url","HttpClientHelper");
-        http.doPost("https://goo.gl",m);
+        System.out.println(http.doPost("https://goo.gl",m));
     }
 }
