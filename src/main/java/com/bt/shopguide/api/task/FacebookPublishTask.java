@@ -19,6 +19,6 @@ public class FacebookPublishTask {
         HttpClientHelper http = HttpClientHelper.getInstance();
         Map m = new HashMap();
         m.put("url","http://www.dealswill.com/detail/19021");
-        System.out.println(http.doPost("http://goo.gl/api/shorten",m));
+        System.out.println(http.doPost("https://goo.gl/api/shorten",m));
     }
 }
