@@ -30,19 +30,20 @@ public class FacebookPublishTask {
     private String host;
 
     //每小时发布一条page
-    @Scheduled(cron = "0 26 17 * * ?")
+    @Scheduled(cron = "0 0 0/2 * * ?")
     public void publishPhoto(){
         List<GoodsList> list = goodsListService.getRandGoods(1,10);
         if(list.size()>0){
             GoodsList gl = list.get(0);
             String shortUrl = shortener.shorten(host+"/detail/"+gl.getId());
-            facebookUtil.sharePhoto(gl.getSmallImageUrl(),gl.getTitle()+"\\r\\nLink Here: "+shortUrl);
+            facebookUtil.sharePhoto(gl.getSmallImageUrl(),gl.getDiscounts()==null?(gl.getPrice()==null?"":gl.getPrice()):gl.getDiscounts() +" "+gl.getTitle()+". " +
+                    "Link Here: "+shortUrl);
         }
     }
 
     public static void main(String[] args) throws Exception {
         String[] cfgs = new String[]{"classpath:applicationContext.xml"};
         ApplicationContext ctx = new ClassPathXmlApplicationContext(cfgs);
-        System.out.println(((GoogleShortener)ctx.getBean("googleShortener")).shorten("http://www.dealswill.com"));
+        ((FacebookPublishTask)ctx.getBean("facebookPublishTask")).publishPhoto();
     }
 }
