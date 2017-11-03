@@ -36,7 +36,7 @@ public class FacebookPublishTask {
         if(list.size()>0){
             GoodsList gl = list.get(0);
             String shortUrl = shortener.shorten(host+"/detail/"+gl.getId());
-            facebookUtil.sharePhoto(gl.getSmallImageUrl(),gl.getDiscounts()==null?(gl.getPrice()==null?"":gl.getPrice()):gl.getDiscounts() +" "+gl.getTitle()+". " +
+            facebookUtil.sharePhoto(gl.getSmallImageUrl(),(gl.getDiscounts()==null?(gl.getPrice()==null?"":gl.getPrice()):gl.getDiscounts()) +" "+gl.getTitle()+". " +
                     "Link Here: "+shortUrl);
         }
     }
