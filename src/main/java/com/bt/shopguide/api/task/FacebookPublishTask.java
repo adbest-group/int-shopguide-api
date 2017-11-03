@@ -3,6 +3,8 @@ package com.bt.shopguide.api.task;
 import com.bt.shopguide.api.util.HttpClientHelper;
 import com.google.gson.Gson;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -25,9 +27,8 @@ public class FacebookPublishTask {
         HttpClientHelper http = HttpClientHelper.getInstance();
         Map m = new HashMap();
         m.put("longUrl","http://www.dealswill.com/detail/19021");
-        m.put("key","AIzaSyDRM32LWTZK_49u6LmUa3le95CUfQ7eBRg");
-        m.put("fields","id");
-        System.out.println(http.doPost("https://www.googleapis.com/urlshortener/v1/url",m));
+        System.out.println(http.doPost("https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyDRM32LWTZK_49u6LmUa3le95CUfQ7eBRg", m, new BasicHeader("Content-Type","application/json") {
+        }));
 
     }
 }

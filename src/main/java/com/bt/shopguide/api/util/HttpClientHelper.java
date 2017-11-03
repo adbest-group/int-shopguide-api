@@ -214,9 +214,12 @@ public class HttpClientHelper {
      *            参数map
      * @return
      */
-    public String doPost(String url, Map<String, String> params) {
+    public String doPost(String url, Map<String, String> params,Header...headers) {
         String result = null;
         HttpPost httpPost = new HttpPost(url);
+        if(headers.length>0){
+            httpPost.setHeaders(headers);
+        }
         CloseableHttpClient httpClient = getConnection();
         CloseableHttpResponse response = null;
         try {
