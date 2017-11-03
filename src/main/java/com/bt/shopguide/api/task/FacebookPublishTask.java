@@ -27,8 +27,7 @@ public class FacebookPublishTask {
         HttpClientHelper http = HttpClientHelper.getInstance();
         Map m = new HashMap();
         m.put("longUrl","http://www.dealswill.com/detail/19021");
-        System.out.println(http.doPost("https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyDRM32LWTZK_49u6LmUa3le95CUfQ7eBRg", m, new BasicHeader("Content-Type","application/json") {
-        }));
+        System.out.println(http.doPost("https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyDRM32LWTZK_49u6LmUa3le95CUfQ7eBRg", m, new BasicHeader("Content-Type","application/json")));
 
     }
 }
