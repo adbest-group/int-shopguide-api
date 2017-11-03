@@ -1,14 +1,6 @@
 package com.bt.shopguide.api.task;
 
-import com.bt.shopguide.api.util.HttpClientHelper;
-import com.google.api.client.extensions.appengine.http.UrlFetchTransport;
-import com.google.api.client.googleapis.extensions.appengine.auth.oauth2.AppIdentityCredential;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.services.urlshortener.Urlshortener;
-import com.google.api.services.urlshortener.UrlshortenerScopes;
-import com.google.api.services.urlshortener.model.Url;
 import com.google.gson.Gson;
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -16,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
