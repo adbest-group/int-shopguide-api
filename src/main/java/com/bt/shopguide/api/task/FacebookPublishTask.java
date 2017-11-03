@@ -28,7 +28,7 @@ public class FacebookPublishTask {
     private String host;
 
     //每小时发布一条page
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 10 17 * * ?")
     public void publishPhoto(){
         List<GoodsList> list = goodsListService.getRandGoods(1,10);
         if(list.size()>0){
