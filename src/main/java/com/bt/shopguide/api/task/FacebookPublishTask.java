@@ -39,7 +39,7 @@ public class FacebookPublishTask {
             con.setRequestProperty("Content-Type", "application/json");
 
             con.getOutputStream().write(requestBody.getBytes());
-
+        System.out.println(con.getResponseCode()+","+con.getResponseMessage());
             if (con.getResponseCode() == 200)
             {
                 StringBuilder sb = new StringBuilder();
