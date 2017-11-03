@@ -118,4 +118,13 @@ public class GoodsListService implements IGoodsListService {
         }
         return glMapper.getRandGoodsList(paramMap);
     }
+
+    @Override
+    public List<GoodsList> getRandGoods(Integer count, Integer topCount) {
+        Map paramMap = new HashMap();
+        int totalCount = glMapper.getTotalCount(paramMap);
+        paramMap.put("randCount",count);
+        paramMap.put("randInTotalCount",topCount);
+        return glMapper.getRandGoodsList(paramMap);
+    }
 }
