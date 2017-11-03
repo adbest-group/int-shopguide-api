@@ -30,13 +30,13 @@ public class FacebookPublishTask {
     private String host;
 
     //每小时发布一条page
-    @Scheduled(cron = "0 23 17 * * ?")
+    @Scheduled(cron = "0 26 17 * * ?")
     public void publishPhoto(){
         List<GoodsList> list = goodsListService.getRandGoods(1,10);
         if(list.size()>0){
             GoodsList gl = list.get(0);
             String shortUrl = shortener.shorten(host+"/detail/"+gl.getId());
-            facebookUtil.sharePhoto(gl.getSmallImageUrl(),gl.getTitle()+"<br/>Link Url:"+shortUrl);
+            facebookUtil.sharePhoto(gl.getSmallImageUrl(),gl.getTitle()+"\\r\\nLink Here: "+shortUrl);
         }
     }
 
