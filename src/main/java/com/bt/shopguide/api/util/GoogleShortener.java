@@ -32,7 +32,7 @@ public class GoogleShortener {
         CloseableHttpClient httpClient = http.getConnection();
 
         try {
-            HttpPost postRequest = new HttpPost(apiUrl);
+            HttpPost postRequest = new HttpPost(apiUrl+"?key="+apiKey);
             postRequest.setHeader("Content-Type", "application/json");
             postRequest.setEntity(new StringEntity(json, "UTF-8"));
 
