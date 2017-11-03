@@ -7,6 +7,8 @@ import com.bt.shopguide.dao.entity.GoodsList;
 import com.bt.shopguide.dao.service.IGoodsListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +41,8 @@ public class FacebookPublishTask {
     }
 
     public static void main(String[] args) throws Exception {
-
-
+        String[] cfgs = new String[]{"classpath:applicationContext.xml"};
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(cfgs);
+        System.out.println(((GoogleShortener)ctx.getBean("googleShortener")).shorten("http://www.dealswill.com"));
     }
 }
