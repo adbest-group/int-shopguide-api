@@ -1,5 +1,6 @@
 package com.bt.shopguide.api.task;
 
+import com.bt.shopguide.api.util.HttpClientHelper;
 import com.google.gson.Gson;
 import org.apache.commons.lang.StringUtils;
 
@@ -21,49 +22,12 @@ public class FacebookPublishTask {
     }
 
     public static void main(String[] args) throws Exception {
-//        HttpClientHelper http = HttpClientHelper.getInstance();
-//        Map m = new HashMap();
-//        m.put("url","http://www.dealswill.com/detail/19021");
-//        System.out.println(http.doPost("https://goo.gl/api/shorten",m));
-        String longURL = "https://www.google.co.jp";
-        String shortURL = "";
-        HttpsURLConnection con = null;
-        Gson gson = new Gson();
-            Map<String, String> valueMap = new HashMap<>();
-            valueMap.put("longUrl", longURL);
-            String requestBody = gson.toJson(valueMap);
-            con = (HttpsURLConnection) new URL("https://www.googleapis.com/urlshortener/v1/url?key=secretKey").openConnection();
-            con.setDoOutput(true);
-            con.setDoInput(true);
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-
-            con.getOutputStream().write(requestBody.getBytes());
-        System.out.println(con.getResponseCode()+","+con.getResponseMessage());
-            if (con.getResponseCode() == 200)
-            {
-                StringBuilder sb = new StringBuilder();
-                try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream())))
-                {
-                    String line;
-                    while((line = br.readLine()) != null)
-                    {
-                        sb.append(line);
-                    }
-                    Map<String, String> map =gson.fromJson(sb.toString(),Map.class);
-
-                    if (map != null && StringUtils.isNotEmpty(map.get("id")))
-                    {
-                        shortURL = map.get("id");
-                    }
-                }
-                catch(IOException e)
-                {
-                    e.printStackTrace(); //TODO Change to Logger
-                }
-                System.out.println(sb);
-            }
-        System.out.println(shortURL);
+        HttpClientHelper http = HttpClientHelper.getInstance();
+        Map m = new HashMap();
+        m.put("longUrl","http://www.dealswill.com/detail/19021");
+        m.put("key","AIzaSyDRM32LWTZK_49u6LmUa3le95CUfQ7eBRg");
+        m.put("fields","id");
+        System.out.println(http.doPost("https://www.googleapis.com/urlshortener/v1/url",m));
 
     }
 }
