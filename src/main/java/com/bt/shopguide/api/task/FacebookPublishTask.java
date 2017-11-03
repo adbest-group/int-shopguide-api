@@ -61,6 +61,7 @@ public class FacebookPublishTask {
                 {
                     e.printStackTrace(); //TODO Change to Logger
                 }
+                System.out.println(sb);
             }
         System.out.println(shortURL);
 
