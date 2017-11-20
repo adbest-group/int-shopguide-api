@@ -27,6 +27,7 @@ import org.apache.http.util.EntityUtils;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -199,6 +200,49 @@ public class HttpClientHelper {
             }
         }
         return result;
+    }
+
+    public InputStream getStaticResourceInputStream(String url) {
+        InputStream is = null;
+        String apiUrl = url;
+        StringBuffer param = new StringBuffer();
+        int i = 0;
+
+        apiUrl += param;
+        System.out.println(apiUrl);
+        String result = null;
+        CloseableHttpClient httpClient = getConnection();
+        CloseableHttpResponse response = null;
+        HttpGet httpPost = null;
+        try {
+            httpPost = new HttpGet(apiUrl);
+            response = httpClient.execute(httpPost);
+            int status = response.getStatusLine().getStatusCode();
+            System.out.println("http request url : " + url + " status : " + status);
+
+            if (status >= 200 && status < 300) {
+                is = response.getEntity().getContent();
+            }
+            EntityUtils.consume(response.getEntity());
+            response.close();
+            return is;
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            httpPost.releaseConnection();
+            if (response != null) {
+                try {
+                    EntityUtils.consume(response.getEntity());
+                    response.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        }
+        return is;
     }
 
     public String doPost(String url) {
