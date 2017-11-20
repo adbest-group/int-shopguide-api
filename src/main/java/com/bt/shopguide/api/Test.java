@@ -6,6 +6,6 @@ package com.bt.shopguide.api;
 public class Test {
 
     public static void main(String[] args) {
-        System.out.println("test app");
+        System.out.println("test app1");
     }
 }
