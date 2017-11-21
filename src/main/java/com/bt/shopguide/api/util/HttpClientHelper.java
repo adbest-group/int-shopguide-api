@@ -26,6 +26,7 @@ import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -202,7 +203,9 @@ public class HttpClientHelper {
         return result;
     }
 
-    public InputStream getStaticResourceInputStream(String url) {
+    public byte[] getStaticResourceInputStream(String url) {
+        byte[] b = null;
+        byte[] tmp = new byte[512];
         InputStream is = null;
         String apiUrl = url;
         StringBuffer param = new StringBuffer();
@@ -222,10 +225,16 @@ public class HttpClientHelper {
 
             if (status >= 200 && status < 300) {
                 is = response.getEntity().getContent();
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                int read = 0;
+                while((read = is.read(tmp))!=-1){
+                    out.write(tmp,0,read);
+                }
+                b = out.toByteArray();
             }
             EntityUtils.consume(response.getEntity());
             response.close();
-            return is;
+            return b;
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -241,8 +250,15 @@ public class HttpClientHelper {
                     e.printStackTrace();
                 }
             }
+            if(is!=null){
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        return is;
+        return b;
     }
 
     public String doPost(String url) {
