@@ -28,16 +28,20 @@ public class FacebookPublishTask {
 
     @Value("${project.host}")
     private String host;
+    @Value("${share.facebook}")
+    private boolean if_share_facebook;
 
     //每小时发布一条page
     @Scheduled(cron = "0 0 0/2 * * ?")
     public void publishPhoto(){
-        List<GoodsList> list = goodsListService.getRandGoods(1,10);
-        if(list.size()>0){
-            GoodsList gl = list.get(0);
-            String shortUrl = shortener.shorten(host+"/detail/"+gl.getId());
-            facebookUtil.sharePhoto(gl.getSmallImageUrl(),(gl.getDiscounts()==null?(gl.getPrice()==null?"":gl.getPrice()):gl.getDiscounts()) +" "+gl.getTitle()+". " +
-                    "Link Here: "+shortUrl);
+        if(if_share_facebook) {
+            List<GoodsList> list = goodsListService.getRandGoods(1, 10);
+            if (list.size() > 0) {
+                GoodsList gl = list.get(0);
+                String shortUrl = shortener.shorten(host + "/detail/" + gl.getId());
+                facebookUtil.sharePhoto(gl.getSmallImageUrl(), (gl.getDiscounts() == null ? (gl.getPrice() == null ? "" : gl.getPrice()) : gl.getDiscounts()) + " " + gl.getTitle() + ". " +
+                        "Link Here: " + shortUrl);
+            }
         }
     }
 
