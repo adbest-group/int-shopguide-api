@@ -174,7 +174,7 @@
     <if test="id != null" >
       and id > #{id,jdbcType=BIGINT}
     </if>
-    order by id desc
+    order by id
     limit #{startIndex,jdbcType=BIGINT},#{pageSize,jdbcType=BIGINT}
   </select>
   <select id="getTotalCount" resultType="java.lang.Integer" parameterType="map" >
