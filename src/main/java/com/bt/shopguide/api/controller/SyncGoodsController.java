@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by caiting on 2017/10/11.
@@ -70,7 +71,9 @@ public class SyncGoodsController {
             glist.setGoodSourceName(goodHtml.getGoodSourceName());
             glist.setShortContent(goodHtml.getShortContent());
             glist.setUrl(goodHtml.getUrl());
-            glist.setThumbs(goodHtml.getThumbs());
+            //产生随机点击数0-10
+            //glist.setThumbs(goodHtml.getThumbs());
+            glist.setThumbs((int)Math.ceil(Math.random()*10));
             glist.setPublish(goodHtml.getPublish());
             glist.setSyncTime(goodHtml.getSyncTime());
             glist.setCreateTime(goodHtml.getCreateTime());

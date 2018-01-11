@@ -80,11 +80,15 @@ public class GlobalVariable {
 
     //刷新top10商品
     public void loadGoodTop10(){
-        PageDataVo<GoodsList> vo = new PageDataVo<>();
-        vo.setPageSize(10);
-        goodsListService.selectGoodsListPage(vo);
-        if(vo.getData()!=null&&vo.getData().size()>0){
-            goods_list_top10 = vo.getData();
+//        PageDataVo<GoodsList> vo = new PageDataVo<>();
+//        vo.setPageSize(10);
+//        goodsListService.selectGoodsListPage(vo);
+//        if(vo.getData()!=null&&vo.getData().size()>0){
+//            goods_list_top10 = vo.getData();
+//        }
+        List<GoodsList> rand10 = goodsListService.getRandGoods(10,30);
+        if(rand10.size()>0){
+            goods_list_top10 = rand10;
         }
         logger.info("刷新top10商品完成！~~~~~~~~~~~~~~~");
     }
